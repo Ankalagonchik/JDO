@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { zValidator } from '@hono/zod-validator';
+import { zValidator } from 'hono/zod-validator';
 import { z } from 'zod';
 import { OAuth2Client } from 'google-auth-library';
 import { sign } from 'jsonwebtoken';
@@ -116,6 +116,7 @@ app.get('/verify', async (c) => {
   const token = authHeader.substring(7);
 
   try {
+    const { verify } = await import('jsonwebtoken');
     const decoded = verify(token, JWT_SECRET) as any;
     const user = await db.select().from(users).where(eq(users.id, decoded.userId)).limit(1);
     

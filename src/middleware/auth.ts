@@ -1,5 +1,4 @@
 import { Context, Next } from 'hono';
-import { verify } from 'jsonwebtoken';
 import { OAuth2Client } from 'google-auth-library';
 import { db, users } from '../db/index.js';
 import { eq } from 'drizzle-orm';
@@ -28,6 +27,7 @@ export const authMiddleware = async (c: Context, next: Next) => {
     
     try {
       // Try JWT first
+      const { verify } = await import('jsonwebtoken');
       const decoded = verify(token, JWT_SECRET) as any;
       const user = await db.select().from(users).where(eq(users.id, decoded.userId)).limit(1);
       

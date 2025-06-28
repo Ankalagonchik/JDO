@@ -4,6 +4,7 @@
   "description": "Backend for JustDebate.online platform",
   "main": "dist/server.js",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
@@ -14,8 +15,6 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",
-    "@hono/cors": "^1.1.0",
-    "@hono/zod-validator": "^0.2.2",
     "hono": "^4.5.8",
     "drizzle-orm": "^0.33.0",
     "postgres": "^3.4.4",
