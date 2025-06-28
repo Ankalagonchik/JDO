@@ -11,7 +11,8 @@
     "start": "node dist/server.js",
     "migrate": "drizzle-kit migrate",
     "generate": "drizzle-kit generate",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",

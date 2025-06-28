@@ -2,7 +2,6 @@ import { Hono } from 'hono';
 import { zValidator } from 'hono/zod-validator';
 import { z } from 'zod';
 import { OAuth2Client } from 'google-auth-library';
-import { sign } from 'jsonwebtoken';
 import { db, users } from '../db/index.js';
 import { eq } from 'drizzle-orm';
 
@@ -72,6 +71,7 @@ app.post('/google', zValidator('json', googleAuthSchema), async (c) => {
     }
 
     // Generate JWT token
+    const { sign } = await import('jsonwebtoken');
     const token = sign(
       { userId: user[0].id, email: user[0].email },
       JWT_SECRET,

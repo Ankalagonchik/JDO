@@ -49,8 +49,8 @@ npm run dev
    - `NODE_ENV=production`
 
 4. Настройте команды сборки:
-   - Build Command: `npm install && npm run build && npm run generate && npm run migrate`
-   - Start Command: `npm start`
+   - **Build Command:** `npm install && npm run generate && npm run migrate`
+   - **Start Command:** `npm start`
 
 ## API Endpoints
 
@@ -92,7 +92,19 @@ npm run dev
 ## Безопасность
 
 - JWT токены для авторизации
-- Google OAuth для аутентификации
+- Google OAuth для аутентификация
 - Валидация данных с помощью Zod
 - CORS настройки
 - Проверка прав доступа
+
+## Деплой
+
+Проект настроен для автоматического деплоя на Render.com:
+
+1. **Сборка происходит автоматически** при push в main ветку
+2. **Миграции запускаются** автоматически после сборки
+3. **Сервер стартует** на порту из переменной окружения PORT
+
+### Команды для Render.com:
+- **Build:** `npm install && npm run generate && npm run migrate`
+- **Start:** `npm start`
