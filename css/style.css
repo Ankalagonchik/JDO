@@ -82,10 +82,10 @@ footer {
   padding: 22px 0 10px 0;
   font-size: 0.95em;
   border-top: 1px solid #223a5e;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  box-shadow: 0 -2px 12px rgba(34,58,94,0.5);
+}
+footer a {
+  color: #66c0f4;
+  text-decoration: underline;
 }
 @media (max-width: 600px) {
   .card {
@@ -97,4 +97,259 @@ footer {
   nav ul {
     gap: 10px;
   }
+}
+
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.debate-card {
+  position: relative;
+  width: 320px;
+  min-height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px #223a5e99, 0 1.5px 0 #66c0f4;
+  background: #1b2838cc;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: 2.5px solid #223a5e;
+}
+.debate-card:hover {
+  transform: translateY(-8px) scale(1.035);
+  box-shadow: 0 16px 48px #66c0f4cc, 0 2px 0 #66c0f4;
+  z-index: 2;
+}
+.card-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.32;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: blur(0.5px) grayscale(0.1) brightness(0.85);
+}
+.debate-card .card-content {
+  position: relative;
+  z-index: 1;
+  padding: 28px 22px 22px 22px;
+  background: linear-gradient(0deg, #16202de0 80%, #223a5e88 100%, #223a5e00 100%);
+  border-radius: 0 0 16px 16px;
+}
+.debate-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.35em;
+  color: #66c0f4;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px #223a5e99;
+}
+.debate-card p {
+  font-size: 1em;
+  margin: 0 0 12px 0;
+  color: #e6f0fa;
+}
+.debate-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #c7d5e0;
+  font-size: 0.98em;
+}
+
+/* Уникальные фоны для каждой темы (Freepik, можно заменить) */
+.politics .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/flat-design-politics-concept_23-2149190852.jpg');
+}
+.science .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/hand-drawn-science-education-background_23-2148499329.jpg');
+}
+.tech .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/technology-background-with-circuit-board-design_1017-19366.jpg');
+}
+.culture .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/hand-drawn-flat-design-culture-concept_23-2149190856.jpg');
+}
+.education .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/hand-drawn-flat-design-education-background_23-2149485846.jpg');
+}
+.economy .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/flat-design-economy-concept_23-2149190854.jpg');
+}
+.society .card-bg {
+  background-image: url('https://img.freepik.com/free-vector/hand-drawn-flat-design-society-concept_23-2149190858.jpg');
+}
+
+@media (max-width: 900px) {
+  .deck {
+    gap: 18px;
+  }
+  .debate-card {
+    width: 98vw;
+    max-width: 370px;
+  }
+}
+@media (max-width: 600px) {
+  .deck {
+    flex-direction: column;
+    align-items: center;
+  }
+  .debate-card {
+    width: 98vw;
+    min-height: 220px;
+    padding: 0;
+  }
+  .debate-card .card-content {
+    padding: 16px 8px 12px 8px;
+  }
+}
+
+.category-deck {
+  margin-bottom: 36px;
+}
+.category-deck h2 {
+  color: #e6f0fa;
+  margin-bottom: 18px;
+  text-align: left;
+  font-size: 1.3em;
+  letter-spacing: 0.5px;
+}
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 28px;
+}
+.debate-card {
+  background: #1b2838ee;
+  border-radius: 18px;
+  box-shadow: 0 0 24px 4px #66c0f455, 0 2px 0 #66c0f4;
+  border: 2px solid #223a5e;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: box-shadow 0.2s, transform 0.18s;
+  cursor: pointer;
+  overflow: hidden;
+}
+.debate-card:hover, .debate-card.open {
+  box-shadow: 0 0 32px 8px #66c0f4cc, 0 2px 0 #66c0f4;
+  transform: translateY(-2px) scale(1.025);
+}
+.card-title {
+  font-size: 1.08em;
+  font-weight: 600;
+  color: #66c0f4;
+  text-align: center;
+  padding: 22px 16px 18px 16px;
+  background: none;
+  transition: color 0.18s;
+  user-select: none;
+}
+.debate-card.open .card-title {
+  color: #fff;
+}
+.card-details {
+  color: #e6f0fa;
+  font-size: 1em;
+  padding: 0 18px 18px 18px;
+  background: linear-gradient(0deg, #16202de0 80%, #223a5e88 100%, #223a5e00 100%);
+  border-radius: 0 0 16px 16px;
+  margin: 0;
+  line-height: 1.5;
+}
+.table-card .card-details {
+  padding: 0 0 18px 0;
+}
+@media (max-width: 900px) {
+  .card-list {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.wiki-main {
+  max-width: 900px;
+  margin: 60px auto 0 auto;
+  padding-bottom: 90px;
+}
+.wiki-title {
+  color: #e6f0fa;
+  font-size: 2.1em;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 38px;
+  letter-spacing: 0.5px;
+}
+.wiki-section {
+  background: rgba(27,40,56,0.98);
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(34,58,94,0.18);
+  margin-bottom: 36px;
+  padding: 32px 36px;
+  color: #e6f0fa;
+}
+.wiki-section h2 {
+  color: #66c0f4;
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+.wiki-section ul {
+  margin-bottom: 0;
+  padding-left: 22px;
+  font-size: 1.08em;
+  line-height: 1.7;
+}
+.wiki-note {
+  margin-top: 22px;
+  border-left: 4px solid #66c0f4;
+  background: #223a5e33;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #b8e0ff;
+}
+.wiki-example {
+  border-left-color: #4be0a5;
+  background: #1b2838cc;
+  color: #b8ffd6;
+}
+.wiki-important {
+  border-left-color: #ffb84b;
+  background: #2d2a1bcc;
+  color: #ffe6b8;
+}
+.wiki-table-wrap {
+  overflow-x: auto;
+  margin-top: 18px;
+}
+.wiki-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #16202d;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 1em;
+}
+.wiki-table th, .wiki-table td {
+  border: 1px solid #223a5e;
+  padding: 12px 10px;
+  text-align: left;
+}
+.wiki-table th {
+  background: #223a5e;
+  color: #66c0f4;
+  font-weight: 700;
+}
+.wiki-table tr:nth-child(even) { background: rgba(34,58,94,0.18); }
+@media (max-width: 700px) {
+  .wiki-section, .wiki-table { padding: 12px 4px; font-size: 0.98em; }
+  .wiki-table th, .wiki-table td { padding: 7px 4px; }
 } 
